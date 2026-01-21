@@ -29,6 +29,7 @@ export const login = async (req, res) => {
 
   const user = result.rows[0];
   const isValid = await bcrypt.compare(password, user.password_hash);
+  const JWT_SECRET = 'supersecretkey'
 
   if (!isValid) {
     return res.status(401).json({ message: "Invalid credentials" });
@@ -36,7 +37,7 @@ export const login = async (req, res) => {
 
   const token = jwt.sign(
     { userId: user.id },
-    process.env.JWT_SECRET,
+    JWT_SECRET,
     { expiresIn: "15m" }
   );
 

@@ -1,13 +1,14 @@
 import jwt from "jsonwebtoken";
 
+const JWT_SECRET = 'supersecretkey'
 export const generateToken = (userId) => {
   return jwt.sign(
     { userId },
-    process.env.JWT_SECRET,
+    JWT_SECRET,
     { expiresIn: "15m" }
   );
 };
 
 export const verifyToken = (token) => {
-  return jwt.verify(token, process.env.JWT_SECRET);
+  return jwt.verify(token, JWT_SECRET);
 };

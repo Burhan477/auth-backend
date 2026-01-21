@@ -1,3 +1,4 @@
+// src/app.js
 import dotenv from "dotenv";
 dotenv.config(); // 👈 MUST be FIRST
 
