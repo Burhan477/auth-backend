@@ -5,12 +5,21 @@ import { pool } from "../db/index.js";
 export const register = async (req, res) => {
   const { email, password } = req.body;
 
+  const existingUser = await pool.query(
+    "SELECT * FROM users WHERE email = $1",
+    [email]
+  );
+
+  if (existingUser.rows.length) {
+    return res.status(409).json({ message: "User already exists" });
+  }
   const hash = await bcrypt.hash(password, 10);
 
   await pool.query(
     "INSERT INTO users (email, password_hash) VALUES ($1, $2)",
     [email, hash]
   );
+
 
   res.status(201).json({ message: "User registered successfully" });
 };
@@ -35,11 +44,7 @@ export const login = async (req, res) => {
     return res.status(401).json({ message: "Invalid credentials" });
   }
 
-  const token = jwt.sign(
-    { userId: user.id },
-    JWT_SECRET,
-    { expiresIn: "15m" }
-  );
+  const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: "15m" });
 
   res.json({ token });
 };

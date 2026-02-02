@@ -1,12 +1,17 @@
-import pkg from "pg";
-const { Pool } = pkg;
+import { Pool } from "pg";
 
-const DATABASE_URL = "postgresql://neondb_owner:npg_X8UZQa2pGcyV@ep-snowy-base-ah0wir2m-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require"
-console.log("DATABASE_URL:", DATABASE_URL);
+const NEON_DB_URL = process.env.NEON_DB_URL
+
+const LOCAL_DB_URL = process.env.LOCAL_DB_URL
 
 export const pool = new Pool({
-  connectionString: DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false, // ✅ REQUIRED for Neon
-  },
+  connectionString: NEON_DB_URL,
+  ssl: { rejectUnauthorized: false },
+  // connectionString: LOCAL_DB_URL,
+  // ssl: false,
 });
+
+console.log(
+  ` Connected to ${process.env.USE_NEON ? "Neon PostgreSQL" : "local PostgreSQL"}`
+);
+
