@@ -1,18 +1,21 @@
 {
   "name": "auth",
   "version": "1.0.0",
-  "type": "module",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "express": "^4.19.2",
-    "cors": "^2.8.5",
-    "pg": "^8.17.2",
-    "bcrypt": "^6.0.0",
-    "jsonwebtoken": "^9.0.3"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Burhan477/auth-backend.git"
   },
-  "devDependencies": {
-    "nodemon": "^3.1.11"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Burhan477/auth-backend/issues"
+  },
+  "homepage": "https://github.com/Burhan477/auth-backend#readme"
 }
