@@ -42,3 +42,6 @@ Thumbs.db
 coverage/
 *.tgz
 *.lock
+
+.vercel
+.env*.local
