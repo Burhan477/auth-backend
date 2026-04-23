@@ -1,21 +1,20 @@
 {
   "name": "auth",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Burhan477/auth-backend.git"
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^4.22.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.20.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Burhan477/auth-backend/issues"
-  },
-  "homepage": "https://github.com/Burhan477/auth-backend#readme"
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
 }
